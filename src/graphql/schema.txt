@@ -1,0 +1,66 @@
+type Query {
+  #Get
+ 
+  getUser:[User]
+  getDonantes:[Donante]
+  getDonante(id: ID!): Donante
+
+  login(email:String, password:String): User
+}
+
+type Mutation {
+  #Create 
+  
+  createUser(email:String, password:String): [User]
+  createDonante(
+  tipo: String,
+  firstName: String,
+  lastName: String,
+  edad: Int,
+  direccion: String,
+  ocupacion: String,
+  partos: Int,
+  cesareas: Int,
+  apellidosRNLactante: String,
+  sdg: Int,
+  fechaNacimRN: String,
+  complicacionesEmbarazo: String,
+  transfusionesUltimos5Anos: String,
+  tatuajesPiercingsAcupunturaUltimoAno: String,
+  tratamientoMedico: String,
+  pruebaRapidaSifilis: String,
+  pruebaRapidaVIH: String,
+  pruebaRapidaHepatitisC: String,
+  observaciones: String
+): Donante
+  
+  #Update
+  
+  updateUser(_id: ID, email:String, password:String): User
+  
+  updateDonante(
+  _id: ID!,
+  tipo: String,
+  firstName: String,
+): Donante
+
+  #Delete
+  
+  deleteUser(_id: ID!): User
+  deleteDonante(_id: ID): Donante
+}
+
+type User {
+  _id: ID
+  email:String
+  password:String
+}
+
+type Donante {
+  _id: ID
+  tipo: String
+  firstName: String
+ 
+}
+
+
