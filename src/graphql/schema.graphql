@@ -4,6 +4,8 @@ type Query {
   getUser:[User]
   getDonantes:[Donante]
   getDonante(id: ID): Donante
+  getCalidades: [Calidad]
+  getCalidad(id: ID): Calidad
 
   login(email:String, password:String): User
 }
@@ -12,11 +14,18 @@ type Mutation {
   #Create 
   
   createUser(email:String, password:String): [User]
+
   createDonante(
   tipo: String,
   firstName: String,
 
 ): Donante
+
+createCalidad(
+    donante: ID!,
+    olor: String
+  ): Calidad
+
   
   #Update
   
@@ -28,11 +37,22 @@ type Mutation {
   firstName: String,
 ): Donante
 
+ updateCalidad(
+    _id: ID!,
+    donante: ID,
+    olor: String
+  ): Calidad
+
+
   #Delete
   
   deleteUser(_id: ID!): User
   deleteDonante(_id: ID!): Donante
+  deleteCalidad(_id: ID!): Calidad
 }
+
+
+
 
 type User {
   _id: ID
@@ -45,6 +65,12 @@ type Donante {
   tipo: String
   firstName: String
  
+}
+
+type Calidad {
+  _id: ID
+  donante: Donante
+  olor: String
 }
 
 

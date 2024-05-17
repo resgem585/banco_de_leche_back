@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Donante from "../models/Donante.js";
+import Calidad from "../models/Calidad.js";
 
 const Query = {
   async getUser() {
@@ -19,6 +20,16 @@ const Query = {
     const donante = await Donante.findById(id);
     return donante;
   },
+// Calidad
+async getCalidades() {
+  const calidades = await Calidad.find().populate('donante');
+  return calidades;
+},
+
+async getCalidad(_, { id }) {
+    const calidad = await Calidad.findById(id);
+}
 };
+
 
 export default Query;
