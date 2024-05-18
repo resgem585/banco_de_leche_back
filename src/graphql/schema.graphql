@@ -4,6 +4,9 @@ type Query {
   getUser:[User]
   getDonantes:[Donante]
   getDonante(id: ID!): Donante
+  getCalidades: [Calidad]
+  getCalidad(id: ID!): Calidad
+
 
   login(email:String, password:String): User
 }
@@ -33,6 +36,12 @@ type Mutation {
   pruebaRapidaHepatitisC: String,
   observaciones: String
 ): Donante
+
+createCalidad(
+    firstName: String,
+    donanteId: ID,
+    sdg: String,
+  ): Calidad
   
   #Update
   
@@ -42,13 +51,40 @@ type Mutation {
   _id: ID!,
   tipo: String,
   firstName: String,
+  lastName: String,
+  edad: Int,
+  direccion: String,
+  ocupacion: String,
+  partos: Int,
+  cesareas: Int,
+  apellidosRNLactante: String,
+  sdg: Int,
+  fechaNacimRN: String,
+  complicacionesEmbarazo: String,
+  transfusionesUltimos5Anos: String,
+  tatuajesPiercingsAcupunturaUltimoAno: String,
+  tratamientoMedico: String,
+  pruebaRapidaSifilis: String,
+  pruebaRapidaVIH: String,
+  pruebaRapidaHepatitisC: String,
+  observaciones: String
 ): Donante
+
+updateCalidad(
+    _id: ID!,
+    firstName: String,
+    donanteId: ID,
+    sdg: String,
+  ): Calidad
+
 
   #Delete
   
   deleteUser(_id: ID!): User
-  deleteDonante(_id: ID): Donante
+  deleteDonante(_id: ID!): Donante
+  deleteCalidad(_id: ID!): Calidad
 }
+
 
 type User {
   _id: ID
@@ -80,4 +116,10 @@ type Donante {
  
 }
 
+type Calidad {
+  id: ID
+  firstName: String!
+  donante: Donante!
+  sdg: String
+}
 
