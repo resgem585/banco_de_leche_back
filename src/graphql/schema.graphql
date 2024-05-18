@@ -51,6 +51,23 @@ createCalidad(
   _id: ID!,
   tipo: String,
   firstName: String,
+  lastName: String,
+  edad: Int,
+  direccion: String,
+  ocupacion: String,
+  partos: Int,
+  cesareas: Int,
+  apellidosRNLactante: String,
+  sdg: Int,
+  fechaNacimRN: String,
+  complicacionesEmbarazo: String,
+  transfusionesUltimos5Anos: String,
+  tatuajesPiercingsAcupunturaUltimoAno: String,
+  tratamientoMedico: String,
+  pruebaRapidaSifilis: String,
+  pruebaRapidaVIH: String,
+  pruebaRapidaHepatitisC: String,
+  observaciones: String
 ): Donante
 
 updateCalidad(
@@ -64,7 +81,7 @@ updateCalidad(
   #Delete
   
   deleteUser(_id: ID!): User
-  deleteDonante(_id: ID): Donante
+  deleteDonante(_id: ID!): Donante
   deleteCalidad(_id: ID!): Calidad
 }
 
@@ -100,7 +117,7 @@ type Donante {
 }
 
 type Calidad {
-  id: ID!
+  id: ID
   firstName: String!
   donante: Donante!
   sdg: String

@@ -29,11 +29,14 @@ async getCalidades() {
   return calidades;
 },
 async getCalidad(_, { id }) {
+  if (!id) {
+    throw new Error('No ID provided');
+  }
   const calidad = await Calidad.findById(id).populate('donante');
   console.log(calidad.donante.firstName);
   console.log(calidad.donante.sdg);
   return calidad;
-},
+}
 }; 
 
 export default Query;
