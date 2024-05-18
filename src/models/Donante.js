@@ -11,7 +11,7 @@ const donanteSchema = new Schema({
     type: String,
     required: false
   },
-  /* lastName: {
+  lastName: {
     type: String,
     required: false
   },
@@ -83,7 +83,7 @@ const donanteSchema = new Schema({
   updatedAt: {
     type: Date,
     default: Date.now
-  } */
+  }
 });
 
 export default model('Donante', donanteSchema)

@@ -4,26 +4,15 @@ import Donante from "../models/Donante.js";
 
 const Mutation = {
     //Donante
-    async createDonante(_, {
-        tipo,
-        firstName,
-    }) {
-        const newDonante = {
-        tipo,
-        firstName,
-        };
+    async createDonante(_, { tipo, firstName, lastName, edad, direccion, ocupacion, partos, cesareas, apellidosRNLactante, sdg, fechaNacimRN, complicacionesEmbarazo, transfusionesUltimos5Anos, tatuajesPiercingsAcupunturaUltimoAno, tratamientoMedico, pruebaRapidaSifilis, pruebaRapidaVIH, pruebaRapidaHepatitisC, observaciones }) {
+      
+        // Crear el nuevo Donante con todos los campos proporcionados
+        const newDonante = new Donante({ tipo, firstName, lastName, edad, direccion, ocupacion, partos, cesareas, apellidosRNLactante, sdg, fechaNacimRN, complicacionesEmbarazo, transfusionesUltimos5Anos, tatuajesPiercingsAcupunturaUltimoAno, tratamientoMedico, pruebaRapidaSifilis, pruebaRapidaVIH, pruebaRapidaHepatitisC, observaciones });
         const donante = await Donante.create(newDonante);
         return await Donante.find();
     },
-    async updateDonante(_, {
-        _id,
-        tipo,
-        firstName,
-    }) {
-        const updatedDonante = {
-        tipo,
-        firstName,
-        };
+    async updateDonante(_, {_id, tipo, firstName, lastName, edad, direccion, ocupacion, partos, cesareas, apellidosRNLactante, sdg, fechaNacimRN, complicacionesEmbarazo, transfusionesUltimos5Anos, tatuajesPiercingsAcupunturaUltimoAno, tratamientoMedico, pruebaRapidaSifilis, pruebaRapidaVIH, pruebaRapidaHepatitisC, observaciones}) {
+        const updatedDonante = {tipo, firstName, lastName, edad, direccion, ocupacion, partos, cesareas, apellidosRNLactante, sdg, fechaNacimRN, complicacionesEmbarazo, transfusionesUltimos5Anos, tatuajesPiercingsAcupunturaUltimoAno, tratamientoMedico, pruebaRapidaSifilis, pruebaRapidaVIH, pruebaRapidaHepatitisC, observaciones};
         return await Donante.findByIdAndUpdate( _id, updatedDonante, { new: true });
     },
       async deleteDonante(_, { _id }) {
