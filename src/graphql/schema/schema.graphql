@@ -1,0 +1,22 @@
+type Query {
+  # Obtener el usuario actual
+  getUser: User
+
+  # Inicio de sesión
+  login(email: String!, password: String!): AuthPayload
+}
+
+type Mutation {
+  # Crear un nuevo usuario
+  createUser(email: String!, password: String!): AuthPayload
+}
+
+type User {
+  _id: ID!
+  email: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
